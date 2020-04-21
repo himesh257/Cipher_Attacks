@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.View;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -39,6 +40,8 @@ public class chuck extends JFrame {
 	ReadFiles read = new ReadFiles();
     RSA_1 rsaKey = new RSA_1();
 	PublicKey publicKey;
+	int lineNum = 0; 
+	JButton decryptBtn = null;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -136,6 +139,7 @@ public class chuck extends JFrame {
 		
 		// 'Send' button action
 		JButton btnSend = new JButton("Send message");
+		
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String msg = txtMessage.getText();
@@ -153,23 +157,9 @@ public class chuck extends JFrame {
 					   writeSock.println( message );
 					   String dataRead = null;
 					   try {
-						   if(read.getAttackName().equals("Known PlainText Attack")) {
-							   try {
-								   txtArea_chuckMsgs.append("Partial PlainText:   " + msg.charAt(0)+msg.charAt(1)+msg.charAt(2) + "\n");
-							   } catch(Exception ee) {
-								   txtArea_chuckMsgs.append("Partial PlainText:   " + msg.charAt(0) + "\n");
-							   }
-							   txtMessage.setText("");
-							   dataRead = readSock.readLine();
-						   } else if (read.getAttackName().equals("Chosen CipherText Attack")){
-							   txtArea_chuckMsgs.append("PlainText [SENT BY SERVER]: " + msg + "\n");
-							   txtMessage.setText("");
-							   dataRead = readSock.readLine();
-						   } else {
-							   txtArea_chuckMsgs.append("PlainText:\t" + msg + "\n");
-							   txtMessage.setText("");
-							   dataRead = readSock.readLine();
-						   }
+						   txtArea_chuckMsgs.append("Chuck: " + msg + "\n");
+						   txtMessage.setText("");
+						   dataRead = readSock.readLine();
 					   } catch (IOException e1) {
 						   txtMessage.setText("");
 						   txtArea_chuckMsgs.append("Error in receiving data from the server!\n");
@@ -182,14 +172,21 @@ public class chuck extends JFrame {
 							check = true;
 						}
 					} else {
+						System.out.println("here");
 						txtMessage.setText("");
 						txtArea_chuckMsgs.append("You are not connected\n");
 					}
 				} catch (Exception e2) {
 					txtMessage.setText("");
-					txtArea_chuckMsgs.append("You are not connected\n");
+					//txtArea_chuckMsgs.append("You are not connected\n");
+				}
+				lineNum = getWrappedLines(txtArea_chuckMsgs);
+				System.out.println(lineNum);
+				if (lineNum > 6) {
+					decryptBtn.setEnabled(true);
 				}
 			}
+			
 		});
 		
 		btnSend.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -211,7 +208,9 @@ public class chuck extends JFrame {
 		choice.add("RSA");
 		contentPane.add(choice);
 		
-		JButton decryptBtn = new JButton("Click here to decrypt messages between Alice and Bob");
+		decryptBtn = new JButton("Click here to decrypt messages between Alice and Bob");
+		decryptBtn.setEnabled(false);
+		
 		decryptBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chuck_RSA r = null;
@@ -236,9 +235,15 @@ public class chuck extends JFrame {
 		});
 		decryptBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		decryptBtn.setBounds(10, 364, 458, 42);
-		contentPane.add(decryptBtn);
-		
-		
+		contentPane.add(decryptBtn);	
+	}
+
+	public static int getWrappedLines(JTextArea component)
+	{
+		View view = component.getUI().getRootView(component).getView(0);
+		int preferredHeight = (int)view.getPreferredSpan(View.Y_AXIS);
+		int lineHeight = component.getFontMetrics( component.getFont() ).getHeight();
+		return preferredHeight / lineHeight;
 	}
 }
 

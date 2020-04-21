@@ -1,2 +1,8 @@
-Alice => Encrypted Text: 2321791968436977328 2321791968436977332 2321791968436977333 2321791968436977339 2321791968436977332 2321791968436977317 2321791968436977337 2321791968436977329 2321791968436977336 2321791968436977342 2321791968436977343 
-Alice => Decrypted Text: cgfhgvjbkml
+Alice => Encrypted Text: dce6b9279d2fb269
+Alice => Decrypted Text: hi
+Alice => Encrypted Text: 4904ee6a7d4111a8
+Alice => Decrypted Text: bj
+Alice => Encrypted Text: 4904ee6a7d4111a8
+Alice => Decrypted Text: bj
+Alice => Encrypted Text: 3f640cba427cdcc1
+Alice => Decrypted Text: nk

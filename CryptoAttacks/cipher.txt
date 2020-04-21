@@ -1,1 +1,1 @@
-Stream Cipher
+Block Cipher

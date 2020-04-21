@@ -53,7 +53,7 @@ public class chuck_RSA extends JFrame {
 		lblNewLabel.setBounds(10, 45, 314, 16);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Decrypted Messages:");
+		JLabel lblNewLabel_1 = new JLabel("All Messages:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1.setBounds(10, 190, 235, 16);
 		contentPane.add(lblNewLabel_1);

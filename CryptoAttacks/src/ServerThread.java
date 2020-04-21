@@ -41,8 +41,7 @@ class ServerThread extends Thread {
 			    StreamCipher stream = new StreamCipher();
 			    RSA_1 rsaKey = new RSA_1();
 				File k = new File("key.txt");
-				File m = new File("messages.txt");
-
+				/*File m = new File("messages.txt");
 				if(m.exists()){
 					m.delete();
 					try {
@@ -50,7 +49,7 @@ class ServerThread extends Thread {
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
-				}
+				}*/
 				if(k.exists()){
 					k.delete();
 					try {
@@ -81,7 +80,14 @@ class ServerThread extends Thread {
 				        encryptedText = rsaKey.encryptMessage(inLine, privateKey);
 				        decryptedText = rsaKey.decryptMessage(encryptedText, publicKey);
 					} else if (read.getCipher().equals("Block Cipher")){
-						
+						DES des = new DES();
+						String key1 = "key1", key2 = "test", key3 = "key1";
+						key.write("Key1: " + key1 + "\nKey2: " + key2 + "\nKey3: "+ key3 + "\n");
+				        key.close();
+						String encryptedText1 = des.encrypt(key3, des.decrypt(key2, des.encrypt(key1, des.utfToBin(inLine))));
+						encryptedText = des.binToHex(encryptedText1);
+						String decryptedText1 = des.decrypt(key1, des.encrypt(key2, des.decrypt(key3, des.hexToBin(des.binToHex(encryptedText1)))));
+						decryptedText = des.binToUTF(decryptedText1);
 					} else if (read.getCipher().equals("Stream Cipher")) {
 						long rand_key = stream.generateRandomKeys();
 						long mainKeys = stream.mainKeys(rand_key);
@@ -93,40 +99,69 @@ class ServerThread extends Thread {
 					}
 			        
 				    if (read.getAttackName().equals("CipherText Only Attack")) {
-				    	
+				    	if(read.whoSentMsg().equals("alice")) {
+		 					messages.write("Alice => Encrypted Text: " + encryptedText+"\n");
+		 					messages.write("Alice => Decrypted Text: " + decryptedText+"\n");
+		 					messages.close();
+					    	writeSock.println("");
+				    	} else if (read.whoSentMsg().equals("bob")) {
+				    		messages.write("Bob => Encrypted Text: " + encryptedText+"\n");
+		 					messages.write("Bob => Decrypted Text: " + decryptedText+"\n");
+		 					messages.close();
+					    	writeSock.println("");
+				    	} else if (read.whoSentMsg().equals("chuck")) {
+				    		messages.write("Chuck => Encrypted Text: " + encryptedText+"\n");
+		 					messages.write("Chuck => Decrypted Text: " + decryptedText+"\n");
+					    	writeSock.println("CipherText:\t" + encryptedText );
+				    	}
 				    } else if (read.getAttackName().equals("Known PlainText Attack")) {
 				    	if(read.whoSentMsg().equals("alice")) {
 		 					messages.write("Alice => Encrypted Text: " + encryptedText+"\n");
 		 					messages.write("Alice => Decrypted Text: " + decryptedText+"\n");
 		 					messages.close();
-				    	} else if (read.whoSentMsg().equals("alice")) {
+					    	writeSock.println("");
+				    	} else if (read.whoSentMsg().equals("bob")) {
 				    		messages.write("Bob => Encrypted Text: " + encryptedText+"\n");
 		 					messages.write("Bob => Decrypted Text: " + decryptedText+"\n");
 		 					messages.close();
+					    	writeSock.println("");
+				    	} else if (read.whoSentMsg().equals("chuck")) {
+				    		messages.write("Chuck => Encrypted Text: " + encryptedText+"\n");
+		 					messages.write("Chuck => Decrypted Text: " + decryptedText+"\n");
+					    	writeSock.println("CipherText:\t" + encryptedText );
 				    	}
-				    	writeSock.println("CipherText:\t" + encryptedText );
 				    } else if (read.getAttackName().equals("Chosen CipherText Attack")) {
 				    	if(read.whoSentMsg().equals("alice")) {
 		 					messages.write("Alice => Encrypted Text: " + encryptedText+"\n");
 		 					messages.write("Alice => Decrypted Text: " + decryptedText+"\n");
 		 					messages.close();
-				    	} else if (read.whoSentMsg().equals("alice")) {
+					    	writeSock.println("");
+				    	} else if (read.whoSentMsg().equals("bob")) {
 				    		messages.write("Bob => Encrypted Text: " + encryptedText+"\n");
 		 					messages.write("Bob => Decrypted Text: " + decryptedText+"\n");
 		 					messages.close();
+					    	writeSock.println("");
+				    	} else if (read.whoSentMsg().equals("chuck")) {
+				    		messages.write("Chuck => Encrypted Text: " + encryptedText+"\n");
+		 					messages.write("Chuck => Decrypted Text: " + decryptedText+"\n");
+					    	writeSock.println("CipherText:\t" + encryptedText );
 				    	}
-					    writeSock.println("CipherText [KNOWN TO USER]:    " + encryptedText );
 				    } else if (read.getAttackName().equals("Chosen PlainText Attack")) {
 				    	if(read.whoSentMsg().equals("alice")) {
 		 					messages.write("Alice => Encrypted Text: " + encryptedText+"\n");
 		 					messages.write("Alice => Decrypted Text: " + decryptedText+"\n");
 		 					messages.close();
-				    	} else if (read.whoSentMsg().equals("alice")) {
+					    	writeSock.println("");
+				    	} else if (read.whoSentMsg().equals("bob")) {
 				    		messages.write("Bob => Encrypted Text: " + encryptedText+"\n");
 		 					messages.write("Bob => Decrypted Text: " + decryptedText+"\n");
 		 					messages.close();
+					    	writeSock.println("");
+				    	} else if (read.whoSentMsg().equals("chuck")) {
+				    		messages.write("Chuck => Encrypted Text: " + encryptedText+"\n");
+		 					messages.write("Chuck => Decrypted Text: " + decryptedText+"\n");
+					    	writeSock.println("CipherText:\t" + encryptedText );
 				    	}
-					    writeSock.println("CipherText:\t" + encryptedText );
 				    }
 				}
 		   } catch (IOException e4) {

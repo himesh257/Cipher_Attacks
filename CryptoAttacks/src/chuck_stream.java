@@ -69,7 +69,7 @@ public class chuck_stream extends JFrame {
 		}
 		br.close();
 		
-		JLabel lblNewLabel_1 = new JLabel("Decrypted Messages:");
+		JLabel lblNewLabel_1 = new JLabel("All Messages:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1.setBounds(10, 117, 235, 16);
 		contentPane.add(lblNewLabel_1);
