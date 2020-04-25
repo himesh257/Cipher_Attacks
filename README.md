@@ -7,11 +7,12 @@ This document explains how to run and the program:
  ![alt text](https://github.com/himesh257/Cipher_Attacks/blob/master/Project%20Screenshots/1.png)
 
 As you can see, you have a dropdown menu with what attacks you can choose. There is also a text area which will log some information there. Clicking on the button below will open up required user interface for either Alice, Bob, or Chuck. At the moment they are grayed out ,but once you click on the “Select Attack” button all the three buttons will be enabled. Let us select an attack,
- 
+
+ ![alt text](https://github.com/himesh257/Cipher_Attacks/blob/master/Project%20Screenshots/2.png)
 
 Here we selected “Chosen PlainText Attack”, and as expected, all the buttons are enabled. If you click on the button “Chuck” now, it is of no use and you will see an error message. No conversation has happened between Alice and Bob, and thus, the error message will appear. Also, please make sure to send at least three messages before trying to decrypt them.
 
- 
+  ![alt text](https://github.com/himesh257/Cipher_Attacks/blob/master/Project%20Screenshots/3.png)
 
 3.	Clicking on “Alice” will open this interface for Alice to choose a cipher and send messages to Bob.
  
