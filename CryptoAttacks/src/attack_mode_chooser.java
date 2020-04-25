@@ -1,11 +1,10 @@
+// importing the required packages
 import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import java.io.File;  // Import the File class
+import java.io.File; 
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,10 +12,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.ServerSocket;
-import java.util.Date;
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.awt.Choice;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -25,13 +21,13 @@ import javax.swing.JScrollPane;
 @SuppressWarnings("serial")
 public class attack_mode_chooser extends JFrame {
 
+	// initializing the variables
 	static attack_mode_chooser frame;
 	protected static final int ServerSocket = 0;
 	private JPanel contentPane;
 	protected ServerSocket servSock;
 	Choice choice;
 	FileWriter myWriter = null;
-	info i = new info();
 	ReadFiles read = new ReadFiles();
     File myObj = null;
     Scanner myReader = null;
@@ -52,6 +48,7 @@ public class attack_mode_chooser extends JFrame {
 		});
 	}
 	
+	// setting up the user interface
 	public attack_mode_chooser() {
 		setFont(new Font("Tahoma", Font.PLAIN, 12));
 		setTitle("Crypto Project");
@@ -74,7 +71,7 @@ public class attack_mode_chooser extends JFrame {
 		btnNewButton.setBounds(211, 21, 154, 39);
 		contentPane.add(btnNewButton);
 		
-
+		// clicking on button "Alice" will open Alice's UI
 		JButton btn_alice = new JButton("Alice");
 		btn_alice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -85,11 +82,12 @@ public class attack_mode_chooser extends JFrame {
 		btn_alice.setBounds(24, 212, 89, 23);
 		contentPane.add(btn_alice);
 		
+		// clicking on button "Bob" will open Bob' UI
 		JButton btn_bob = new JButton("Bob");
 		btn_bob.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				bob b = new bob();
-			    b.setVisible(false);
+			    b.setVisible(true);
 			}
 		});
 		btn_bob.setBounds(136, 212, 89, 23);
@@ -102,9 +100,7 @@ public class attack_mode_chooser extends JFrame {
 				myObj = new File("count.txt");
 		    	  try {
 						myReader = new Scanner(myObj);
-					} catch (FileNotFoundException e12345) {
-						// TODO Auto-generated catch block
-					}
+					} catch (FileNotFoundException e12345) {}
 					while (myReader.hasNextLine()) {
 					  data = myReader.nextLine();
 					}
@@ -115,6 +111,8 @@ public class attack_mode_chooser extends JFrame {
 						if(Integer.parseInt(data) > 7 && data != null) {
 							textArea_errors.append("Chuck can now decrypt\n");
 							if(read.getCipher().equals("Block Cipher")) {
+								
+								// checking the attacks and cipher that is chosen
 								if(read.getAttackName().equals("Known PlainText Attack")) {
 									chuck_block cb = null;
 									cb = new chuck_block();
@@ -168,6 +166,8 @@ public class attack_mode_chooser extends JFrame {
 								    c.setVisible(true);
 								}
 							}
+						} else {
+							textArea_errors.append("Not enough messages for chuck to figure out the key\n");
 						}
 					} catch (Exception err) {
 						textArea_errors.append("Not enough messages for chuck to figure out the key\n");
@@ -177,6 +177,7 @@ public class attack_mode_chooser extends JFrame {
 		btn_chuck.setBounds(242, 212, 89, 23);
 		contentPane.add(btn_chuck);
 		
+		// UI elements
 		JLabel lblNewLabel = new JLabel("               (Click on the buttons to open screens)");
 		lblNewLabel.setBounds(34, 239, 307, 23);
 		contentPane.add(lblNewLabel);
@@ -196,14 +197,18 @@ public class attack_mode_chooser extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		btn_chuck.setEnabled(false);
 		
+		// create or re initiate some files when clicked on the "Select Attack" button
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				//frame.setVisible(false);
+
+				// creating File objects
 				File myObj = new File("choice.txt");
 				File myObj3 = new File("cipher.txt");
 				File m = new File("messages.txt");
 				File p = new File("plaintext.txt");
 				File count_file = new File("count.txt");
+				
+				// checking if the file exist, then delete it, or else continue
 				if(m.exists()){
 					m.delete();
 					try {
@@ -235,6 +240,7 @@ public class attack_mode_chooser extends JFrame {
 					e1.printStackTrace();
 				}
 				try {
+					// writing into the files
 					myWriter = new FileWriter("choice.txt");
 					myWriter.write(choice.getSelectedItem());
 					myWriter.close();

@@ -213,18 +213,16 @@ public class alice extends JFrame {
 					}
 				} catch (Exception e2) {
 					txtMessage.setText("");
-					//txtArea_1.append("You are not connected\n");
+					txtArea_aliceMsgs.append("You are not connected\n");
 				}
 				lineNum = getWrappedLines(txtArea_aliceMsgs);
 				System.out.println(lineNum);
 				if (lineNum > 6) {
 					FileWriter count = null;
 					try {
-						System.out.println(lineNum);
 						count = new FileWriter("count.txt");
 						count.write(Integer.toString(lineNum));
 						count.close();
-						System.out.println("done writing to file");
 					} catch (Exception w) {
 						
 					}

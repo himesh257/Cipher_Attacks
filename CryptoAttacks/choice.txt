@@ -1,1 +1,1 @@
-Known PlainText Attack
+CipherText Only Attack

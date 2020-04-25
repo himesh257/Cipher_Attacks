@@ -1,8 +1,4 @@
-Alice => Encrypted Text: dce6b9279d2fb269
-Alice => Decrypted Text: hi
-Alice => Encrypted Text: 4904ee6a7d4111a8
-Alice => Decrypted Text: bj
-Alice => Encrypted Text: 4904ee6a7d4111a8
-Alice => Decrypted Text: bj
-Alice => Encrypted Text: 3f640cba427cdcc1
-Alice => Decrypted Text: nk
+Alice => Encrypted Text: UqcsEpFn+S1aGK7PzGONNMA7TXujN1A4q4U32kvoc4gTwYX0WiGIN0FPMBXZtT7FSZOi6/+Zv+UW16tC+q/hZDHeztmc/eEUqAixpfOxp+pt1PFvd+E1EEyFzcHuf5d/t+9UOsLxCEiml7rVNxcRj02CfGbXjSxb0ZIz/Xa5tk4VgxAqrZqbmD8cbFptYBR4ZNPHqiHH/PfjjwcUfWvddciuVWpBAfbYT0qwLuzZKdYmJ+KiQCQuiTFfh9I0byRxkA7B0T0QdCHesbjW7cHAvT7q2edszwKUeZGLtxQW1Bt0UGo1CcRDmba8kurydMiARIPQitvmGZ2GeHC+rbQsvA==
+Alice => Decrypted Text: hbnjkml,
+Bob => Encrypted Text: a7XYWZW8PdiGTb6FKCC578H1FM/MCMukTLvMjikAYZ2XV0sky9OUfV2cPJzfoF5Qb+0kOVi4T0taSbXYY+87ntfQGKjJPeJOwhvYXsd8ENJmc/dAZLWfsj8HF43hlPZNAEwhXI7jtU9IOQktoUlLRQMtBi+f2+wyRs81I8BXBlJLNJldYa6nYioaVGVE00RY6nD+dRzPGm5SPmeJAolIe26Qehj1xJggwb6Spo4fHCjCjHz/BPo97/m3hFLQS4pF7inlfzC0t6uu5cBI9Y1evL/rSJ4PWDMlQXNXzGO9G0usSAW807kZ9MdNiIloAOFNj9mvs1zMPQyTcvBSWeD1Yg==
+Bob => Decrypted Text: bnm,

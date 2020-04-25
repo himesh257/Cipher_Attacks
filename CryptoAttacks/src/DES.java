@@ -1,3 +1,10 @@
+/*
+ * This class is used for generating keys and encrypting/decrypting
+ * messages using Block cipher. It uses the triple key encryption schema
+ * which is very secured. Keys are generated at random. 
+ * Used in ServerThread.java
+ */
+
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 
@@ -556,18 +563,4 @@ public class DES {
 		
 		return mergedP;
 	}
-	
-	/*@SuppressWarnings({ "unused" })
-	public static void main(String[] args) {
-		
-		DES des = new DES();
-		String key1 = "key1", key2 = "test", key3 = "key1", message = null;
-		message = "hi this is himesh";
-		String encrypted = des.encrypt(key3, des.decrypt(key2, des.encrypt(key1, utfToBin(message))));
-		System.out.println(binToHex(encrypted));
-		String decrypted = des.decrypt(key1, des.encrypt(key2, des.decrypt(key3, hexToBin(binToHex(encrypted)))));
-		System.out.println(binToUTF(decrypted));
-		
-	}*/
-
 }

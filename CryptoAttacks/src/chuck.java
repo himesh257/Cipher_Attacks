@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -144,7 +145,20 @@ public class chuck extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String msg = txtMessage.getText();
 				FileWriter myWriter = null;
+				File f = new File("who_sent_msg.txt");
+				if(f.exists()){
+					f.delete();
+					try {
+						f.createNewFile();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}
+				FileWriter who = null;
 				try {
+					who = new FileWriter("who_sent_msg.txt");
+					who.write("chuck");
+					who.close();
 					myWriter = new FileWriter("cipher.txt");
 					myWriter.write(choice.getSelectedItem());
 					myWriter.close();

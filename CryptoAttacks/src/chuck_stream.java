@@ -1,3 +1,8 @@
+/*
+ * this class is for chuck's stream cipher's encryption
+ * depending on the chosen attack, the UI will change
+ */
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;

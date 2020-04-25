@@ -1,3 +1,9 @@
+/*
+ * This class notifies when a file is changed
+ * This has been implemented in creation of alice, bob, 
+ * and chuck's user interfaces
+ */
+
 import java.util.*;
 import java.io.*;
 
@@ -10,6 +16,7 @@ public abstract class FileWatcher extends TimerTask {
     this.timeStamp = file.lastModified();
   }
 
+  // main function that checks for the file change
   public final void run() {
     long timeStamp = file.lastModified();
 

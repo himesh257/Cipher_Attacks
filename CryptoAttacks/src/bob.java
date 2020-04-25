@@ -190,7 +190,6 @@ public class bob extends JFrame {
 				try {
 					if( sock_bob != null ) {
 					   String message = msg;
-					   System.out.println(msg);
 					   writeSock_bob.println( message );
 					   String dataRead = null;
 					   try {
@@ -223,11 +222,9 @@ public class bob extends JFrame {
 				if (lineNum > 6) {
 					FileWriter count = null;
 					try {
-						System.out.println(lineNum);
 						count = new FileWriter("count.txt");
 						count.write(Integer.toString(lineNum));
 						count.close();
-						System.out.println("done writing to file");
 					} catch (Exception w) {
 						
 					}

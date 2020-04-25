@@ -1,3 +1,8 @@
+/*
+ * this class is for chuck's block cipher's encryption
+ * depending on the chosen attack, the UI will change
+ */
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -41,6 +46,8 @@ public class chuck_block extends JFrame {
 
 	@SuppressWarnings("static-access")
 	public chuck_block() {
+		
+		// setting up the UI elements
 		setFont(new Font("Tahoma", Font.PLAIN, 12));
 		setTitle("Crypto Project");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
