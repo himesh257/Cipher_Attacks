@@ -4,7 +4,7 @@ This document explains how to run and the program:
 1.	Run “ServerThread.java” to start the socket server which is used for sending and receiving messages
 2.	Once the server is running in the back, run “attack_mode_chooser.java” to run the program. Here is what to expect,
 
- 
+ ![alt text](https://github.com/himesh257/Cipher_Attacks/blob/master/Project%20Screenshots/1.png)
 
 As you can see, you have a dropdown menu with what attacks you can choose. There is also a text area which will log some information there. Clicking on the button below will open up required user interface for either Alice, Bob, or Chuck. At the moment they are grayed out ,but once you click on the “Select Attack” button all the three buttons will be enabled. Let us select an attack,
  
