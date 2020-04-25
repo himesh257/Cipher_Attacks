@@ -50,10 +50,10 @@ Once the button is enabled, meaning the decryption is done, clicking on it will 
 
 6.	This entire example was done using Block Cipher and Chosen PlainText Attack mode. Feel free to try using various cipher and attack modes
 7.	Please make sure you follow all the required constraints. Here is a quick review,
- - Run Server.java
- - Run attack_mode_chooser.java
- -	Select an attack
- -	Click on Alice and then click on Chuck
- -	Make sure they are both connected to the server
- -	Start sending messages
- -	Send enough messages and click on Chuck to decrypt the messages and see the keys
+    - Run Server.java
+    - Run attack_mode_chooser.java
+    -	Select an attack
+    -	Click on Alice and then click on Chuck
+    -	Make sure they are both connected to the server
+    -	Start sending messages
+    -	Send enough messages and click on Chuck to decrypt the messages and see the keys
